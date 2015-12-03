@@ -1,7 +1,8 @@
 package com.unleashed.android.trackerz.maps;
 
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -10,6 +11,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.unleashed.android.trackerz.R;
+import com.unleashed.android.trackerz.locationtracker.GpsLocationTracker;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -20,8 +22,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
 
@@ -39,9 +40,40 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        try{
+
+            GpsLocationTracker mGpsLocationTracker = new GpsLocationTracker(MapsActivity.this);
+
+            /**
+             * Set GPS Location fetched address
+             */
+            if (mGpsLocationTracker.canGetLocation())
+            {
+
+                Double latitude = mGpsLocationTracker.getLatitude();
+                Double longitude = mGpsLocationTracker.getLongitude();
+
+                // Add a marker in Sydney and move the camera
+                LatLng myLocationLatLng = new LatLng(latitude, longitude);
+                mMap.addMarker(new MarkerOptions().position(myLocationLatLng).title("My Location"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocationLatLng));
+
+            }
+            else
+            {
+                mGpsLocationTracker.showSettingsAlert();
+            }
+
+        }catch (Exception ex){
+            Toast.makeText(getApplicationContext(), "Error Retrieving Location. Try Again.", Toast.LENGTH_SHORT).show();
+
+        }
+
+
+
+    }
+
+    void text(){
+
     }
 }
