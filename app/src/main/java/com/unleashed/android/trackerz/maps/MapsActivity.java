@@ -11,6 +11,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.unleashed.android.trackerz.R;
+import com.unleashed.android.trackerz.config.AppConfig;
 import com.unleashed.android.trackerz.locationtracker.GpsLocationTracker;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -50,13 +51,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if (mGpsLocationTracker.canGetLocation())
             {
 
-                Double latitude = mGpsLocationTracker.getLatitude();
-                Double longitude = mGpsLocationTracker.getLongitude();
+                double latitude = mGpsLocationTracker.getLatitude();
+                double longitude = mGpsLocationTracker.getLongitude();
 
-                // Add a marker in Sydney and move the camera
                 LatLng myLocationLatLng = new LatLng(latitude, longitude);
                 mMap.addMarker(new MarkerOptions().position(myLocationLatLng).title("My Location"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocationLatLng));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocationLatLng, AppConfig.ZoomLevel.ZOOM_MEDIUM));
+
 
             }
             else
@@ -73,7 +74,4 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    void text(){
-
-    }
 }
