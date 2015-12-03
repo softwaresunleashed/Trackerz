@@ -1,5 +1,6 @@
-package com.unleashed.android.trackerz;
+package com.unleashed.android.trackerz.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.unleashed.android.trackerz.R;
+import com.unleashed.android.trackerz.maps.MapsActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -80,22 +84,32 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        switch(id){
+            case R.id.nav_trackme:
+                openMapsActivity();
+                break;
+            case R.id.nav_gallery:
+                break;
+            case R.id.nav_slideshow:
+                break;
+            case R.id.nav_manage:
+                break;
+            case R.id.nav_share:
+                break;
+            case R.id.nav_send:
+                break;
 
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void openMapsActivity() {
+        Intent myIntent = new Intent(MainActivity.this, MapsActivity.class);
+        // myIntent.putExtra("key", value); //Optional parameters
+        startActivity(myIntent);
     }
 }

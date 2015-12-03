@@ -9,11 +9,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.unleashed.android.trackerz.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:context=".ui.MainActivity"
+    tools:showIn="@layout/app_bar_main"
+    android:gravity="center">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="@string/app_name"
+        android:drawableTop="@drawable/ic_location"
+        android:gravity="center"
+        android:textColor="@color/black" />
 </RelativeLayout>
