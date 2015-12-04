@@ -1,7 +1,9 @@
 package com.unleashed.android.trackerz.maps;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -17,13 +19,24 @@ import com.unleashed.android.trackerz.locationtracker.GpsLocationTracker;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private FloatingActionButton trackButton;
+    private SupportMapFragment mapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        trackButton = (FloatingActionButton) findViewById(R.id.trackMeButton);
+        trackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
 
@@ -50,15 +63,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
              */
             if (mGpsLocationTracker.canGetLocation())
             {
-
                 double latitude = mGpsLocationTracker.getLatitude();
                 double longitude = mGpsLocationTracker.getLongitude();
 
                 LatLng myLocationLatLng = new LatLng(latitude, longitude);
                 mMap.addMarker(new MarkerOptions().position(myLocationLatLng).title("My Location"));
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocationLatLng, AppConfig.ZoomLevel.ZOOM_MEDIUM));
-
-
             }
             else
             {
@@ -67,11 +77,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }catch (Exception ex){
             Toast.makeText(getApplicationContext(), "Error Retrieving Location. Try Again.", Toast.LENGTH_SHORT).show();
-
         }
-
-
-
     }
+
+
+
 
 }

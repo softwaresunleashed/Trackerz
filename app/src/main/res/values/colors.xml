@@ -2,10 +2,15 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">@color/floating_action_button_bg</color>
 
 
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+
+
+    <color name="floating_action_button_bg">#41A110</color>
+    <color name="floating_action_button_bg_pressed">#41D110</color>
+    <color name="floating_action_button_bg_ripple">#FF8800</color>
 
 </resources>
