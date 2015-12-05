@@ -21,6 +21,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private FloatingActionButton trackButton;
     private SupportMapFragment mapFragment;
+    private boolean isMapReady = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         trackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(isMapReady == true){
+                    updateMyCurrentLocation();
+                }
             }
         });
 
@@ -53,6 +56,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+        isMapReady = true;
+
+
+        updateMyCurrentLocation();
+
+
+    }
+
+    private void updateMyCurrentLocation() {
 
         try{
 
@@ -78,9 +91,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }catch (Exception ex){
             Toast.makeText(getApplicationContext(), "Error Retrieving Location. Try Again.", Toast.LENGTH_SHORT).show();
         }
+
     }
-
-
 
 
 }
