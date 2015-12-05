@@ -7,8 +7,25 @@
     <string name="action_settings">Settings</string>
 
 
+    <!-- Navigation Bar Menu Item String -->
     <string name="track_me">Track Me</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="menu_str_history_summary">Summary</string>
+    <string name="menu_str_settings_config">App Config</string>
+    <string name="nav_header_login_msg">Login with credentials provided \n or \n Sign Up for new account</string>
+
+
+
+    <!-- Buttons String -->
+    <string name="login_str">Login</string>
+    <string name="logout_str">Logout</string>
+    <string name="signup_str">Sign Up</string>
+
+
+
+
+    <string name="title_activity_maps">Trackerz Map</string>
+
+
 
 
 </resources>

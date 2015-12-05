@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.text.Layout;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.unleashed.android.trackerz.R;
 import com.unleashed.android.trackerz.maps.MapsActivity;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Main Activity FAB button
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,14 +39,25 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        // Main Activity Navigation Bar (Left side)
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+//        Layout layout = (Layout)findViewById(R.layout.nav_header_main);
+//        TextView tv_log = (TextView)layout.findView.findViewBy(R.id.tv_loginBtn);
+//        tv_log.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Open the login screen
+//            }
+//        });
     }
 
     @Override
@@ -88,7 +102,8 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_trackme:
                 openMapsActivity();
                 break;
-            case R.id.nav_gallery:
+            case R.id.nav_history_summary:
+                // TODO : Sudhanshu : Add code to check if logged in and get history of all added devices / cars
                 break;
             case R.id.nav_slideshow:
                 break;
