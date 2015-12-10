@@ -1,12 +1,10 @@
-package com.unleashed.android.trackerz.ui;
+package com.unleashed.android.trackerz.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.text.Layout;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,10 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
+import com.unleashed.android.trackerz.LoginModule.LoginActivity;
 import com.unleashed.android.trackerz.R;
 import com.unleashed.android.trackerz.maps.MapsActivity;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -50,14 +51,17 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-//        Layout layout = (Layout)findViewById(R.layout.nav_header_main);
-//        TextView tv_log = (TextView)layout.findView.findViewBy(R.id.tv_loginBtn);
-//        tv_log.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Open the login screen
-//            }
-//        });
+
+        // Displaying Login Activity
+        View hView =  navigationView.inflateHeaderView(R.layout.nav_header_main);
+        TextView tv_log = (TextView)hView.findViewById(R.id.tv_loginBtn);
+        tv_log.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open the login screen
+                openLoginActivity();
+            }
+        });
     }
 
     @Override
@@ -126,5 +130,11 @@ public class MainActivity extends AppCompatActivity
         Intent myIntent = new Intent(MainActivity.this, MapsActivity.class);
         // myIntent.putExtra("key", value); //Optional parameters
         startActivity(myIntent);
+    }
+
+    private void openLoginActivity() {
+        Intent myLoginIntent = new Intent(MainActivity.this, LoginActivity.class);
+        // myIntent.putExtra("key", value); //Optional parameters
+        startActivity(myLoginIntent);
     }
 }
