@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.unleashed.android.trackerz.LoginModule.LoginActivity;
 import com.unleashed.android.trackerz.R;
@@ -23,6 +24,8 @@ import com.unleashed.android.trackerz.maps.MapsActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private long back_pressed = 0;   // Counter to keep track of time elapsed between previous back button pressed.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +74,18 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+
+            // Confirm from user before exiting app.
+            // (Press Back Button twice to exit)
+            if (back_pressed + 1000 > System.currentTimeMillis()){
+                super.onBackPressed();
+            }
+            else{
+                Toast.makeText(getBaseContext(),
+                        "Press once again to exit!", Toast.LENGTH_SHORT)
+                        .show();
+            }
+            back_pressed = System.currentTimeMillis();
         }
     }
 
@@ -97,6 +111,8 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
