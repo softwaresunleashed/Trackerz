@@ -8,15 +8,26 @@
             android:icon="@drawable/ic_menu_trackme"
             android:title="@string/menu_str_track_me" />
         <item
+            android:id="@+id/nav_vehicle_list"
+            android:icon="@drawable/ic_menu_directions_bus"
+            android:title="@string/menu_str_vehicle_list" />
+        <item
             android:id="@+id/nav_history_summary"
             android:icon="@drawable/ic_menu_directions_bus"
             android:title="@string/menu_str_history_summary" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_notification"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="@string/menu_str_notification" />
+
+        <item
+            android:id="@+id/nav_map_view"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_str_map_view" />
 
     </group>
+
+
 
     <!-- Navigation Bar Settings Options-->
     <item android:title="Settings">
@@ -27,6 +38,28 @@
                 android:title="@string/menu_str_settings_config" />
         </menu>
     </item>
+
+    <!-- Navigation Bar Misc Options-->
+    <item android:title="Misc">
+        <menu>
+            <item
+                android:id="@+id/nav_customer_support"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="@string/menu_str_customer_support" />
+
+            <item
+                android:id="@+id/nav_driver_details"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="@string/menu_str_driver_details" />
+
+            <item
+                android:id="@+id/nav_app_ver"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="@string/menu_str_app_ver" />
+        </menu>
+    </item>
+
+
 
 
     <!--

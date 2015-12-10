@@ -9,8 +9,14 @@
 
     <!-- Navigation Bar Menu Item String -->
     <string name="menu_str_track_me">Track Me</string>
-    <string name="menu_str_history_summary">Summary</string>
+    <string name="menu_str_vehicle_list">Vehicle List</string>
+    <string name="menu_str_history_summary">Summary KMs</string>
+    <string name="menu_str_notification">Notification</string>
+    <string name="menu_str_map_view">Map View</string>
     <string name="menu_str_settings_config">Settings</string>
+    <string name="menu_str_customer_support">Customer Support</string>
+    <string name="menu_str_driver_details">Driver Details</string>
+    <string name="menu_str_app_ver">Application Version</string>
 
 
     <string name="nav_header_login_msg">Login with credentials provided \n or \n Sign Up for new account</string>

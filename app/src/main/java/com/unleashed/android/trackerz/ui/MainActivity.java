@@ -121,19 +121,40 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         switch(id){
+
+/* Main Menu */
             case R.id.nav_trackme:
                 openMapsActivity();
                 break;
+
             case R.id.nav_history_summary:
                 // TODO : Sudhanshu : Add code to check if logged in and get history of all added devices / cars
                 break;
-            case R.id.nav_slideshow:
+
+            case R.id.nav_notification:
                 break;
+
+            case R.id.nav_map_view:
+                break;
+
+/* Settings Menu */
             case R.id.nav_settings:
                 openSettingsActivity();
                 break;
+/* Misc Menu */
+            case R.id.nav_customer_support:
+                break;
+
+            case R.id.nav_driver_details:
+                break;
+
+            case R.id.nav_app_ver:
+                break;
+
+/* Communicate Menu */
             case R.id.nav_share:
                 break;
+
             case R.id.nav_send:
                 break;
 
