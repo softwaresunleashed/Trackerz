@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.unleashed.android.trackerz.LoginModule.LoginActivity;
 import com.unleashed.android.trackerz.R;
+import com.unleashed.android.trackerz.Settings.SettingsActivity;
 import com.unleashed.android.trackerz.maps.MapsActivity;
 
 
@@ -88,8 +89,9 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+
         if (id == R.id.action_settings) {
+            openSettingsActivity();
             return true;
         }
 
@@ -111,7 +113,8 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_slideshow:
                 break;
-            case R.id.nav_manage:
+            case R.id.nav_settings:
+                openSettingsActivity();
                 break;
             case R.id.nav_share:
                 break;
@@ -136,5 +139,10 @@ public class MainActivity extends AppCompatActivity
         Intent myLoginIntent = new Intent(MainActivity.this, LoginActivity.class);
         // myIntent.putExtra("key", value); //Optional parameters
         startActivity(myLoginIntent);
+    }
+
+    private void openSettingsActivity() {
+        Intent SettingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(SettingsIntent);
     }
 }

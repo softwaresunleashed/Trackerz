@@ -6,7 +6,7 @@
         <item
             android:id="@+id/nav_trackme"
             android:icon="@drawable/ic_menu_trackme"
-            android:title="@string/track_me" />
+            android:title="@string/menu_str_track_me" />
         <item
             android:id="@+id/nav_history_summary"
             android:icon="@drawable/ic_menu_directions_bus"
@@ -22,7 +22,7 @@
     <item android:title="Settings">
         <menu>
             <item
-                android:id="@+id/nav_manage"
+                android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_menu_settings"
                 android:title="@string/menu_str_settings_config" />
         </menu>
