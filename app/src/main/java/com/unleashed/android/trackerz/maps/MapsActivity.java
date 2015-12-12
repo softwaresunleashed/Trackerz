@@ -1,4 +1,4 @@
-package com.unleashed.android.trackerz.maps;
+package com.unleashed.android.trackerz.Maps;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,8 +14,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.unleashed.android.trackerz.R;
-import com.unleashed.android.trackerz.config.AppConfig;
-import com.unleashed.android.trackerz.locationtracker.GpsLocationTracker;
+import com.unleashed.android.trackerz.Config.AppConfig;
+import com.unleashed.android.trackerz.LocationTracker.GpsLocationTracker;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 

@@ -1,4 +1,4 @@
-package com.unleashed.android.trackerz.locationtracker;
+package com.unleashed.android.trackerz.LocationTracker;
 
 /**
  * Created by sudhanshu on 26/09/15.

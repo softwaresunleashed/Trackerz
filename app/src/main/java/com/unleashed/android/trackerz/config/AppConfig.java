@@ -1,4 +1,4 @@
-package com.unleashed.android.trackerz.config;
+package com.unleashed.android.trackerz.Config;
 
 /**
  * Created by sudhanshu on 03/12/15.

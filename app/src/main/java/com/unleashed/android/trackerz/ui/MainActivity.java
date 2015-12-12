@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.unleashed.android.trackerz.LoginModule.LoginActivity;
 import com.unleashed.android.trackerz.R;
 import com.unleashed.android.trackerz.Settings.SettingsActivity;
-import com.unleashed.android.trackerz.maps.MapsActivity;
+import com.unleashed.android.trackerz.Maps.MapsActivity;
 
 
 public class MainActivity extends AppCompatActivity

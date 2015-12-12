@@ -11,6 +11,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -45,7 +47,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".maps.MapsActivity"
+            android:name=".Maps.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity
             android:name=".LoginModule.LoginActivity"
@@ -54,13 +56,6 @@
         <activity
             android:name=".Settings.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <!--
-             ATTENTION: This was auto-generated to add Google Play services to your project for
-             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
-        -->
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
 
     </application>
 
