@@ -26,10 +26,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.unleashed.android.trackerz.Config.AppConfig;
+import com.unleashed.android.trackerz.HttpRetrofit.API.LoginApi;
+import com.unleashed.android.trackerz.HttpRetrofit.Model.LoginModel;
 import com.unleashed.android.trackerz.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 /**
@@ -285,8 +293,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mPassword = password;
         }
 
+
+        private boolean loginResulBool;
+        private String loginResultStr;
+
         @Override
         protected Boolean doInBackground(Void... params) {
+
             // TODO: attempt authentication against a network service.
 
             try {
@@ -296,16 +309,59 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
+//            for (String credential : DUMMY_CREDENTIALS) {
+//                String[] pieces = credential.split(":");
+//                if (pieces[0].equals(mEmail)) {
+//                    // Account exists, return true if the password matches.
+//                    return pieces[1].equals(mPassword);
+//                }
+//            }
 
-            // TODO: register the new account here.
-            return true;
+            ///////////////// ~~~~~~~~~~~~~~~~ //////////////////////
+
+            //Retrofit section start from here...
+            //create an adapter for retrofit with base url
+            RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(AppConfig.URL.TRACKERZ_WEB_BASE_URL).build();
+
+            //creating a service for adapter with our GET class
+            LoginApi loginService = restAdapter.create(LoginApi.class);
+
+            //Now ,we need to call for response
+            //Retrofit using gson for JSON-POJO conversion
+
+            loginService.getFeed(mEmail,new Callback<LoginModel>() {
+                @Override
+                public void success(LoginModel loginModel, Response response) {
+
+                    //we get json object from github server to our POJO or model class
+                    loginResulBool = true;
+
+                    loginResultStr = loginModel.getMessage();
+
+
+
+
+                    // tv.setText("Github Name :"+gitmodel.getName()+"\nWebsite :"+gitmodel.getBlog()+"\nCompany Name :"+gitmodel.getCompany());
+                    // pbar.setVisibility(View.INVISIBLE);
+                    // disable progressbar
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    // Display Error Message
+                    loginResulBool = false;
+
+
+                    //tv.setText(error.getMessage());
+                    //pbar.setVisibility(View.INVISIBLE);                               //disable progressbar
+                }
+            });
+
+            ///////////////// ~~~~~~~~~~~~~~~~ //////////////////////
+
+
+
+            return loginResulBool;
         }
 
         @Override
