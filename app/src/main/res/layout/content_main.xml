@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ui.MainActivity"
+    tools:context=".UI.MainActivity"
     tools:showIn="@layout/app_bar_main"
     android:gravity="center">
 
@@ -20,38 +20,7 @@
         android:drawableTop="@drawable/ic_location"
         android:gravity="center"
         android:textColor="@color/black"
-        android:visibility="gone" />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/tv"
-        android:layout_marginBottom="56dp"
-        android:layout_above="@+id/edit"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Click Me"
-        android:id="@+id/button"
-        android:layout_below="@+id/edit"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
-
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/pb" />
+        android:visibility="visible" />
 
 
 </RelativeLayout>
