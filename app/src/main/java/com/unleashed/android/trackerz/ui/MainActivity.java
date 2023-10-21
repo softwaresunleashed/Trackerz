@@ -13,13 +13,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.unleashed.android.trackerz.LoginModule.LoginActivity;
+import com.unleashed.android.trackerz.Maps.MapsActivity;
 import com.unleashed.android.trackerz.R;
 import com.unleashed.android.trackerz.Settings.SettingsActivity;
-import com.unleashed.android.trackerz.Maps.MapsActivity;
+
+
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class MainActivity extends AppCompatActivity
@@ -27,12 +37,19 @@ public class MainActivity extends AppCompatActivity
 
     private long back_pressed = 0;   // Counter to keep track of time elapsed between previous back button pressed.
 
+    Button click;
+    TextView tv;
+    EditText edit_user;
+    ProgressBar pbar;
+    String API = "https://api.github.com";                         //BASE URL
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         // Main Activity FAB button
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
